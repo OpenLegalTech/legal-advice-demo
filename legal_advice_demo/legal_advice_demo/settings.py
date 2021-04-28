@@ -20,7 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'treebeard',
-    'legal_advice_builder',
+    'legal_advice_builder.apps.LegalAdviceBuilderConfig',
     'crispy_forms'
 ]
 
