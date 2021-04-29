@@ -1,3 +1,3 @@
 Django==3.1.7
 django-crispy-forms==1.11.2
-git+https://github.com/OpenLegalTech/django-legal-advice-builder.git@main#egg=django_legal_advice_builder
+git+https://github.com/OpenLegalTech/django-legal-advice-builder.git
