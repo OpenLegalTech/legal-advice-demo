@@ -1,5 +1,6 @@
 from django.views.generic import DetailView
 from django.views.generic import ListView
+from legal_advice_builder.mixins import GenerateEditableDocumentMixin
 from legal_advice_builder.models import Answer
 from legal_advice_builder.models import LawCase
 from legal_advice_builder.views import FormWizardView
@@ -16,7 +17,13 @@ class LawCaseDetail(DetailView):
     model = LawCase
 
 
-class LawCaseForm(FormWizardView):
+class AnswerDetail(DetailView):
+
+    model = Answer
+
+
+class LawCaseForm(GenerateEditableDocumentMixin,
+                  FormWizardView):
 
     def get_lawcase(self):
         pk = self.kwargs.get('pk')

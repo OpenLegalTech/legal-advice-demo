@@ -61,7 +61,13 @@
 {% endif %}
 
 {% if template %}
-<a href="?download=1">download</a>
+<form method="post">
+    {% csrf_token %}
+    <button>
+        <input type="hidden" name="download" value="download" />
+        download
+    </button>
+</form>
 <p>{{ template | safe }}</p>
 {% endif %}
 
