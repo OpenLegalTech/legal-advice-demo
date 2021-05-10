@@ -1,6 +1,8 @@
+from django.urls import reverse
 from django.views.generic import DetailView
 from django.views.generic import ListView
-from legal_advice_builder.mixins import GenerateEditableDocumentMixin
+from django.views.generic import UpdateView
+from legal_advice_builder.forms import DocumentForm
 from legal_advice_builder.models import Answer
 from legal_advice_builder.models import LawCase
 from legal_advice_builder.views import FormWizardView
@@ -22,8 +24,16 @@ class AnswerDetail(DetailView):
     model = Answer
 
 
-class LawCaseForm(GenerateEditableDocumentMixin,
-                  FormWizardView):
+class AnswerUpdate(UpdateView):
+
+    model = Answer
+    form_class = DocumentForm
+
+    def get_success_url(self):
+        return reverse('answer-detail-update', kwargs={'pk': self.object.id})
+
+
+class LawCaseForm(FormWizardView):
 
     def get_lawcase(self):
         pk = self.kwargs.get('pk')

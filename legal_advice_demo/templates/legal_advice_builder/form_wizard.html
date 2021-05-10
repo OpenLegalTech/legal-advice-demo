@@ -3,6 +3,7 @@
 
 {% block content %}
 {% if form %}
+{{ form.media }}
 <div class="row justify-content-end mt-5">
     <div class="col-5">
         <h1>{{ law_case.title }}</h1>
@@ -70,13 +71,5 @@
 </form>
 <p>{{ template | safe }}</p>
 {% endif %}
-
-
-
-
-
-
-
-
 
 {% endblock %}

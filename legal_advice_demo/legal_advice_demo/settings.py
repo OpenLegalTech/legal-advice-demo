@@ -20,7 +20,8 @@ INSTALLED_APPS = [
 
     'treebeard',
     'legal_advice_builder.apps.LegalAdviceBuilderConfig',
-    'crispy_forms'
+    'crispy_forms',
+    'tinymce'
 ]
 
 MIDDLEWARE = [
