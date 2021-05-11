@@ -3,7 +3,6 @@
 
 {% block content %}
 {% if form %}
-{{ form.media }}
 <div class="row justify-content-end mt-5">
     <div class="col-5">
         <h1>{{ law_case.title }}</h1>
@@ -61,15 +60,52 @@
 </div>
 {% endif %}
 
-{% if template %}
-<form method="post">
-    {% csrf_token %}
-    <button>
-        <input type="hidden" name="download" value="download" />
-        download
-    </button>
-</form>
-<p>{{ template | safe }}</p>
+{% if template and not answer_form %}
+<div>
+    <div class="row">
+        <div class="col p-5 border mt-4">
+            {{ template | safe }}
+
+            {% if allow_download %}
+            <form method="post">
+                {% csrf_token %}
+                <div class="row justify-content-end mt-3">
+                    <div class="col-5">
+                        <input class="btn btn-primary btn-lg" type="submit" name="download" value="download" />
+                    </div>
+                </div>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if preview %}
+<div>
+    <div class="row">
+        <div class="col">
+            {% if answer_form %}
+            {{ answer_form.media }}
+            <form method="post">
+                {% csrf_token %}
+                {{ answer_form|crispy }}
+                <div class="row justify-content-end mt-3">
+                    <div class="col-5">
+                        <input class="btn btn-primary btn-lg" type="submit" name="download" value="download" />
+                    </div>
+                    <div class="col-5">
+                        <input class="btn btn-primary btn-lg" type="submit" value="Änderungen speichern" />
+                    </div>
+                </div>
+            </form>
+            {% endif %}
+        </div>
+        <div class="col p-5 border mt-4">
+            {{ preview | safe }}
+        </div>
+    </div>
+</div>
 {% endif %}
 
 {% endblock %}
