@@ -83,8 +83,8 @@
 
 {% if preview %}
 <div>
-    <div class="row">
-        <div class="col">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
             {% if answer_form %}
             {{ answer_form.media }}
             <form method="post">
@@ -100,9 +100,6 @@
                 </div>
             </form>
             {% endif %}
-        </div>
-        <div class="col p-5 border mt-4">
-            {{ preview | safe }}
         </div>
     </div>
 </div>
