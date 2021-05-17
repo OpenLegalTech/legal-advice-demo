@@ -83,20 +83,22 @@
 
 {% if preview %}
 <div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-5">
         <div class="col-md-8">
             {% if answer_form %}
+            <h2 class="text-center">Ihre Klage</h2>
+            {% if law_case.extra_help %}
+            <div class="alert alert-success" role="alert">
+               {{ law_case.extra_help }}
+              </div>
+            {% endif %}
             {{ answer_form.media }}
             <form method="post">
                 {% csrf_token %}
                 {{ answer_form|crispy }}
-                <div class="row justify-content-end mt-3">
-                    <div class="col-5">
-                        <input class="btn btn-primary btn-lg" type="submit" name="download" value="download" />
-                    </div>
-                    <div class="col-5">
-                        <input class="btn btn-primary btn-lg" type="submit" value="Änderungen speichern" />
-                    </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3 mb-3">
+                    <input class="btn btn-primary btn-lg" type="submit" name="download" value="download" />
+                    <input class="btn btn-primary btn-lg" type="submit" value="Änderungen speichern" />
                 </div>
             </form>
             {% endif %}
