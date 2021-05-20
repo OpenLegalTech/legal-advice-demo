@@ -8,7 +8,7 @@
         <h1>{{ law_case.title }}</h1>
 
         {% if form %}
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form|crispy }}
             <div class="row justify-content-center mt-3">
