@@ -26,22 +26,28 @@
             {% endif %}
 
             {% if success %}
-                <div class="alert alert-success mt-5" role="alert">{{ message }}</div>
-                    {% if next %}
-                        <form method="post">
-                            {% csrf_token %}
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3 mb-3">
-                                <button class="btn btn-primary btn-lg">
-                                <input type="hidden" name="next" value="{{ next.id }}" />
-                                Weiter
-                                </button>
-                            </div>
-                        </form>
-                    {% endif %}
+                <div class="alert alert-success mt-5" role="alert">
+                    <div class="mb-3 fw-bold pb-2">Schritt {{ current_step|add:1}} von {{ step_count }}: {{ question.questionaire }} <i class="bi bi-check-lg"></i></div>
+                    <div>{{ message }}</div>
+                </div>
+                {% if next %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3 mb-3">
+                            <button class="btn btn-primary btn-lg">
+                            <input type="hidden" name="next" value="{{ next.id }}" />
+                            Weiter
+                            </button>
+                        </div>
+                    </form>
+                {% endif %}
             {% endif %}
 
             {% if failure %}
-                <div class="alert alert-danger mt-5" role="alert">{{ message }}</div>
+                <div class="alert alert-danger mt-5" role="alert">
+                    <div class="mb-3 fw-bold pb-2">Schritt {{ current_step|add:1}} von {{ step_count }}: {{ question.questionaire }} <i class="bi bi-x-lg"></i></div>
+                    <div>{{ message }}</div>
+                </div>
             {% endif %}
 
             {% if answer_form %}
