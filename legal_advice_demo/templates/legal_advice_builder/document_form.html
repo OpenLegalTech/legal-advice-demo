@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags i18n %}
+
+{% block content %}
+<div class="row align-items-start">
+    <div class="col">
+        <form method="post" class="clearfix mt-5 border p-3">
+            <div class="mb-3 fw-bold border-bottom pb-2">
+            {% csrf_token %}
+            {{ formset.media }}
+            {{ formset.management_form }}
+            {{ form|crispy }}
+
+            <div class="accordion mt-3" id="document_fields">
+            {% for form in formset %}
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading{{ forloop.counter }}">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="true" aria-controls="collapse{{ forloop.counter }}">
+                    {{ form.content.label }}
+                  </button>
+                </h2>
+                <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#document_fields">
+                    <div class="accordion-body">
+                        {{ form|crispy }}
+                    </div>
+                  </div>
+                </div>
+            {% endfor %}
+            </div>
+                <div class="text-end mt-3">
+                    <input class="btn btn-primary btn-lg pull-right" type="submit" value="Weiter" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col">
+        <div class="mt-5 border p-3">
+            <div class="mb-3 pb-2">
+
+        <ul class="nav nav-tabs" id="displayTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="preview-tab" data-bs-toggle="tab" data-bs-target="#preview" type="button" role="tab" aria-controls="{% trans 'Preview' %}" aria-selected="true">{% trans 'Preview' %}</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="placeholder-tab" data-bs-toggle="tab" data-bs-target="#placeholders" type="button" role="tab" aria-controls="{% trans 'Placeholder' %}" aria-selected="false">{% trans 'Placeholder' %}</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="sample-answers-tab" data-bs-toggle="tab" data-bs-target="#sample-answers" type="button" role="tab" aria-controls="{% trans 'Sample Answers' %}" aria-selected="false">{% trans 'Sample Answers' %}</button>
+              </li>
+        </ul>
+
+        <div class="tab-content" id="displayTabs">
+            <div class="tab-pane fade show active" id="preview" role="tabpanel" aria-labelledby="preview-tab">
+                <div class="mt-3 border p-3">
+                    {% autoescape off %}
+                    {{ document.template_with_sample_answers }}
+                    {% endautoescape %}
+                </div>
+            </div>
+            <div class="tab-pane fade" id="placeholders" role="tabpanel" aria-labelledby="placeholder-tab">
+                {% if variables %}
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">{% trans 'Question' %}</th>
+                                <th scope="col">{% trans 'Placeholder' %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for variable, question in variables.items %}
+                            <tr>
+                                <td>{{ question }} {% if question.options %}{{ question.options }}{% endif %}</td>
+                                <td>&#123;&#123; answers.{{ variable }} &#125;&#125;</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+            </div>
+            <div class="tab-pane fade" id="sample-answers" role="tabpanel" aria-labelledby="preview-tab">
+                <div class="mt-3 border p-3">
+                    {{ document.sample_answers }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
