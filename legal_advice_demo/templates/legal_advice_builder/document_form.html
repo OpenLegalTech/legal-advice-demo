@@ -28,7 +28,7 @@
             {% endfor %}
             </div>
                 <div class="text-end mt-3">
-                    <input class="btn btn-primary btn-lg pull-right" type="submit" value="Weiter" />
+                    <input class="btn btn-primary btn-lg pull-right" type="submit" value="{% trans 'Save' %}" />
                 </div>
             </div>
         </form>
@@ -79,11 +79,22 @@
             </div>
             <div class="tab-pane fade" id="sample-answers" role="tabpanel" aria-labelledby="preview-tab">
                 <div class="mt-3 border p-3">
-                    {{ questions_formset.media }}
-                    {{ questions_formset.management_form }}
-                    {% for form in questions_formset %}
-                    {{ form|crispy }}
-                    {% endfor %}
+                    <form method="post" class="clearfix p-3">
+                        {% csrf_token %}
+                        {{ questions_formset.management_form }}
+                        {% for form in questions_formset %}
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                {{ form|crispy }}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                        <div class="text-end mt-3">
+                            <input class="btn btn-primary btn-lg pull-right" type="submit" value="{% trans 'Save' %}" />
+                        </div>
+                    </div>
+                    </form>
                 </div>
             </div>
         </div>
