@@ -20,5 +20,6 @@ urlpatterns = [
     path('documents/<int:pk>/edit/', DocumentEditAdminView.as_view(), name='document-update-view'),
     path('documents/<int:pk>/', DocumentPreviewAdminView.as_view(), name='document-detail-view'),
     path('documents/', DocumentEditAdminView.as_view(), name='document-create-view'),
-    path('tinymce/', include('tinymce.urls'))
+    path('tinymce/', include('tinymce.urls')),
+    path('klageautomat/admin/', include('legal_advice_builder.urls'))
 ]
