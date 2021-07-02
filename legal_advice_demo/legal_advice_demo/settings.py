@@ -98,3 +98,9 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+TINYMCE_DEFAULT_CONFIG = {
+    'relative_urls': False,
+    'width': '100%',
+    'height': 300
+}
