@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% load %}
 
 {% block content %}
 <div class="container mb-5 mt-5" style="min-height: 500px;">
@@ -9,11 +9,11 @@
 
             {% if form %}
                 <form method="post" class="clearfix mt-5 border p-3">
-                    {% if stepcount > 1 %}
+                    {% if step_count > 1 %}
                     <div class="mb-3 fw-bold border-bottom pb-2">Schritt {{ current_step|add:1}} von {{ step_count }}: {{ question.questionaire }}</div>
                     {% endif %}
                     {% csrf_token %}
-                    {{ form|crispy }}
+                    {% include 'legal_advice_builder/admin/form.html' with form=form %}
                     <div class="text-end mt-3">
                         <input class="btn btn-primary btn-lg pull-right" type="submit" value="Weiter" />
                     </div>
@@ -61,7 +61,7 @@
                 {{ answer_form.media }}
                 <form method="post">
                 {% csrf_token %}
-                {{ answer_form|crispy }}
+                {% include 'legal_advice_builder/admin/form.html' with form=answer_form %}
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3 mb-3">
                     <input class="btn btn-primary btn-lg" type="submit" name="download" value="download" />
                     <input class="btn btn-primary btn-lg" type="submit" value="Änderungen speichern" />

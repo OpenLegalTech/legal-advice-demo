@@ -20,7 +20,6 @@ INSTALLED_APPS = [
 
     'treebeard',
     'legal_advice_builder.apps.LegalAdviceBuilderConfig',
-    'crispy_forms',
     'tinymce'
 ]
 
@@ -61,8 +60,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
