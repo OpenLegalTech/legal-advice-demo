@@ -16,5 +16,5 @@ urlpatterns = [
     path('answers/<int:pk>/', AnswerDetail.as_view(), name='answer-detail-download'),
     path('answers/<int:pk>/edit/', AnswerUpdate.as_view(), name='answer-detail-update'),
     path('tinymce/', include('tinymce.urls')),
-    path('klageautomat/admin/', include('legal_advice_builder.urls'))
+    path('advicebuilder/admin/', include('legal_advice_builder.urls'))
 ]
