@@ -1,4 +1,5 @@
-# legal-advice-demo
+# Legal Advice Demo
+This is a demo project to allow a quickstart of the [Django Legal Advice Builder](https://github.com/OpenLegalTech/django-legal-advice-builder) and see how it works. For more information check the [Django Legal Advice Builder README](https://github.com/OpenLegalTech/django-legal-advice-builder#readme)
 
 ```
 git clone git@github.com:OpenLegalTech/legal-advice-demo.git
@@ -10,5 +11,6 @@ cd legal_advice_demo/
 cp .env_sample  .env
 ./manage.py migrate
 ./manage.py runserver
-browse to http://localhost:8000/
 ```
+browse to http://localhost:8000/
+
