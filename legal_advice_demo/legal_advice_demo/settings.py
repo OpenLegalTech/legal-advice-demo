@@ -89,6 +89,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+LEGAL_ADVICE_BUILDER_PERMISSION_MIXIN = 'legal_advice_demo.permissions.AllowAccessToAdminToEveryonaMixin'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
