@@ -16,3 +16,11 @@ cp .env_sample  .env
 ```
 browse to http://localhost:8000/
 
+To add all German translations:
+```
+cd ..
+django-admin compilemessages
+cd legal_advice_demo/
+./manage.py runserver
+```
+
