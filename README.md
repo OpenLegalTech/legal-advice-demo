@@ -1,5 +1,5 @@
 # Legal Advice Demo
-This is a demo project to allow a quickstart of the [Django Legal Advice Builder](https://github.com/OpenLegalTech/django-legal-advice-builder) and see how it works. For more information check the [Django Legal Advice Builder README](https://github.com/OpenLegalTech/django-legal-advice-builder#readme)
+This is a demo project to allow a quickstart of the [Django Legal Advice Builder](https://github.com/OpenLegalTech/django-legal-advice-builder) and see how it works. For more information check the [Django Legal Advice Builder README](https://github.com/OpenLegalTech/django-legal-advice-builder#readme).
 
 ```
 git clone git@github.com:OpenLegalTech/legal-advice-demo.git
