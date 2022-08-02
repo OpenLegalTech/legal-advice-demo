@@ -1,4 +1,5 @@
 Django==3.1.7
 django-tinymce==3.3.0
+python-dateutil==2.8.2
 python-dotenv==0.17.0
 git+https://github.com/OpenLegalTech/django-legal-advice-builder.git
